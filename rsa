@@ -14,16 +14,19 @@ def factorize_prime():
         with open(sys.argv[1]) as in_file:
             for num in in_file:
                 num = int(num)
-                if num % 2 == 0:
-                    print("{}={}*{}".format(num, num // 2, 2))
+                if is_prime(num):
+                    print("{}=1*{}".format(num, num))
                 else:
-                    for i in range(3, int(num ** 0.5) + 1, 2):
-                        if num % i == 0:
-                            print("{}={}*{}".format(num, num // i, i))
-                            break
+                    if num % 2 == 0:
+                        print("{}={}*{}".format(num, num // 2, 2))
                     else:
-                        # If no prime factors were found, the number is prime
-                        print("{}=1*{}".format(num, num))
+                        for i in range(3, int(num ** 0.5) + 1, 2):
+                            if num % i == 0:
+                                print("{}={}*{}".format(num, num // i, i))
+                                break
+                        else:
+                            # If no prime factors were found, the number is prime
+                            print("{}=1*{}".format(num, num))
 
     except (IndexError, ValueError):
         pass
