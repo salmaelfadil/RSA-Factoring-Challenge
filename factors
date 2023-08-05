@@ -1,0 +1,31 @@
+#!/usr/bin/python3
+
+import sys
+
+def factorize(num):
+    nums_printed = []
+    for i in range(2, num):
+        if num in nums_printed:
+            break        
+        if num % i == 0:
+            nums_printed.append(num)
+            print("{}={}*{}".format(num, i, (num // i)))
+
+def main(in_file):
+    try:
+        with open(in_file) as in_file:
+            line = in_file.readline()
+
+            while line != "":
+                num = int(line.split('\n')[0])
+                factorize(num)
+                line = in_file.readline()
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python3 factors.py <file>")
+        sys.exit(1)
+    
+    main(sys.argv[1])
