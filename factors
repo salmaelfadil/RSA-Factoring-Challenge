@@ -9,7 +9,7 @@ def factorize(num):
             break        
         if num % i == 0:
             nums_printed.append(num)
-            print("{}={}*{}".format(num, i, (num // i)))
+            print("{}={}*{}".format(num, (num // i), i))
 
 def main(in_file):
     try:
