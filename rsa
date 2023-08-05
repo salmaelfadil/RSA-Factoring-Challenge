@@ -1,32 +1,25 @@
 #!/usr/bin/python3
+ 
 import sys
-
-def is_prime(num):
-    if num < 2:
-        return False
-    for i in range(2, int(num ** 0.5) + 1):
-        if num % i == 0:
-            return False
-    return True
 
 def factorize_prime():
     try:
         with open(sys.argv[1]) as in_file:
             for num in in_file:
                 num = int(num)
-                if is_prime(num):
-                    print("{}=1*{}".format(num, num))
-                else:
-                    if num % 2 == 0:
+                if num % 2 == 0:
                         print("{}={}*{}".format(num, num // 2, 2))
-                    else:
-                        for i in range(3, int(num ** 0.5) + 1, 2):
-                            if num % i == 0:
-                                print("{}={}*{}".format(num, num // i, i))
-                                break
-    except (IndexError, ValueError):
-        pass
+                        continue
+                i = 3
+                while i < num // 2:
+                    if num % i == 0:
+                        print("{}={}*{}".format(num, num // i, i))
+                        break
+                    i = i + 2
+                if i == (num // 2) + 1:
+                    print("{}={}*{}".format(num, num, 1))
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
-if __name__ == "__main__":
-    factorize_prime()
 
+factorize_prime()
