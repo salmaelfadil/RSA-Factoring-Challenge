@@ -1,35 +1,30 @@
-#!/usr/bin/python3
+from sys import argv
 
-import sys
 
-def factorize(num):
-    nums_printed = set()
-    found_factor = False
-    for i in range(2, num):
-        if num in nums_printed:
-            break
-        if num % i == 0:
-            nums_printed.add(num)
-            found_factor = True
-            print("{}={}*{}".format(num, (num / i), i))
-    if not found_factor:
-        print("{}={}*{}".format(num, num, 1))
+def factorize(value):
+    """"print a simple descomposition of an integer > 1"""
+    i = 2
 
-def main(in_file):
-    try:
-        with open(in_file) as in_file:
-            line = in_file.readline()
+    if value < 2:
+        return
+    print()
+    print(value, "<- value-bef")
+    while value % i:
+        i += 1
+    print("{:.0f}={:.0f}*{:.0f}".format(value, value / i, i))
+    print(value, "<- value-aft")
+    print()
 
-            while line != "":
-                num = int(line.split('\n')[0])
-                factorize(num)
-                line = in_file.readline()
-    except Exception as e:
-        print(f"An error occurred: {e}")
+if len(argv) != 2:
+    exit()
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python3 factors.py <file>")
-        sys.exit(1)
-    
-    main(sys.argv[1])
+try:
+    with open(argv[1]) as file:
+        line = file.readline()
+
+        while line != "":
+            value = int(line.split(n)[0])
+            factorize(value)
+            line = file.readline()
+except:
+    pass
