@@ -3,12 +3,12 @@
 import sys
 
 def factorize(num):
-    nums_printed = []
+    nums_printed = set()
     for i in range(2, num):
         if num in nums_printed:
             break
         if num % i == 0:
-            nums_printed.append(num)
+            nums_printed.add(num)
             print("{}={}*{}".format(num, (num / i), i))
 
 def main(in_file):
