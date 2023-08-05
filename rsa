@@ -24,10 +24,6 @@ def factorize_prime():
                             if num % i == 0:
                                 print("{}={}*{}".format(num, num // i, i))
                                 break
-                        else:
-                            # If no prime factors were found, the number is prime
-                            print("{}=1*{}".format(num, num))
-
     except (IndexError, ValueError):
         pass
 
