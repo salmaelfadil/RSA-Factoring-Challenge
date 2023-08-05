@@ -16,7 +16,7 @@ def main(in_file):
             line = in_file.readline()
 
             while line != "":
-                num = int(line.split('\n')[0])
+                num = int(line.split(n)[0])
                 factorize(num)
                 line = in_file.readline()
     except Exception as e:
