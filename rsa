@@ -1,19 +1,19 @@
 #!/usr/bin/python3
-def is_prime(num):
-    if num < 2:
-        return False
-    for i in range(2, int(num ** 0.5) + 1):
-        if num % i == 0:
-            return False
-    return True
-
-def prime_factorization(num):
-    if is_prime(num):
-        print("{}=1*{}".format(num, num))
-    else:
-        print("{} is not a prime number.".format(num))
-
-if __name__ == "__main__":
-    num = int(input("Enter a number: "))
-    prime_factorization(num)
-
+def factorize_prime():
+    try:
+        with open(sys.argv[1]) as input_file:
+            for i in input_file:
+                i = int(i)
+                if i % 2 == 0:
+                        print("{}={}*{}".format(i, i // 2, 2))
+                        continue
+                j = 3
+                while j < i // 2:
+                    if i % j == 0:
+                        print("{}={}*{}".format(i, i // j, ))
+                        break
+                    j = j + 2
+                if j == (i // 2) + 1:
+                    print("{}={}*{}".format(i, i, 1))
+    except (IndexError):
+        pass
