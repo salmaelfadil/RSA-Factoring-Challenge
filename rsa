@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+import sys
+
 def factorize_prime():
     try:
         with open(sys.argv[1]) as input_file:
@@ -17,3 +19,4 @@ def factorize_prime():
                     print("{}={}*{}".format(i, i, 1))
     except (IndexError):
         pass
+factorize_prime()
