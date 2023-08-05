@@ -4,12 +4,16 @@ import sys
 
 def factorize(num):
     nums_printed = set()
+    found_factor = False
     for i in range(2, num):
         if num in nums_printed:
             break
         if num % i == 0:
             nums_printed.add(num)
+            found_factor = True
             print("{}={}*{}".format(num, (num / i), i))
+    if not found_factor:
+        print("{}={}*{}".format(num, num, 1))
 
 def main(in_file):
     try:
