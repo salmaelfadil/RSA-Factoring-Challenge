@@ -6,12 +6,10 @@ def factorize(num):
     nums_printed = []
     if num < 2:
         return
-    for i in range(2, num):
-        if num in nums_printed:
-            break        
-        if num % i == 0:
-            nums_printed.append(num)
-            print("{}={}*{}".format(num, (num // i), i))
+    factor = 2
+    while num % factor != 0:
+        factor += 1
+    print("{}={}*{}".format(num, (num // factor), factor))
 
 def main(in_file):
     try:
